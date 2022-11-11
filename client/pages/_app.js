@@ -1,19 +1,19 @@
 import React from 'react';
 import { Toaster } from 'react-hot-toast';
 
-import { Layout } from '../components/Index';
+import { Layout } from '../components';
 import '../styles/globals.css';
-import { AppContextProvider } from '../context/StateContext';
+import { StateContext } from '../context/StateContext';
 
 function MyApp({ Component, pageProps }) {
   return (
-    <AppContextProvider>
+    <StateContext>
       <Layout>
         <Toaster />
         <Component {...pageProps} />
       </Layout>
-    </AppContextProvider>
-  );
+    </StateContext>
+  )
 }
 
-export default MyApp;
+export default MyApp

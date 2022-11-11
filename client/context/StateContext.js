@@ -1,9 +1,9 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { toast } from 'react-hot-toast';
 
-const AppContext = createContext(null);
+const Context = createContext();
 
-export const AppContextProvider = ({ children }) => {
+export const StateContext = ({ children }) => {
   const [showCart, setShowCart] = useState(false);
   const [cartItems, setCartItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
@@ -77,7 +77,7 @@ export const AppContextProvider = ({ children }) => {
   }
 
   return (
-    <AppContext.Provider
+    <Context.Provider
       value={{
         showCart,
         setShowCart,
@@ -96,13 +96,8 @@ export const AppContextProvider = ({ children }) => {
       }}
     >
       {children}
-    </AppContext.Provider>
+    </Context.Provider>
   )
 }
-export const useAppContext = () => {
-  const context = useContext(AppContext);
-  if (!context) {
-    console.error('Error deploying App Context');
-  }
-  return context;
-};
+
+export const useStateContext = () => useContext(Context);
